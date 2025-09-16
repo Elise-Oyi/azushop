@@ -27,6 +27,7 @@ export const register = async (req: Request, res: Response) => {
     
     // Create user profile in Firestore
     await userService.createUser({ 
+      userId: userRecord.uid,
       email, 
       fullname,
       role: "customer"

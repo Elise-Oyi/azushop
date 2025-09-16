@@ -1,4 +1,8 @@
 import type { Request, Response } from "express";
+import { FirestoreRepo } from "../repo/firestore.repo.ts";
+import Collection from "../config/collections.ts";
+
+const userService = new FirestoreRepo<{ name: string; email: string }>(Collection.azushopUser);
 
 // Example: Register User
 export const registerUser = async (req: Request, res: Response) => {
@@ -21,13 +25,10 @@ export const registerUser = async (req: Request, res: Response) => {
 // Example: Get All Users
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    // TODO: fetch from Firestore
-    const users = [
-      { id: "1", name: "Liz", email: "liz@example.com" },
-      { id: "2", name: "Ken", email: "ken@example.com" },
-    ];
+    const userList = await userService.list({ limit: 10 });
+    console.log("Fetched users from Firestore:", userList);
 
-    res.success("Users fetched successfully", users);
+    res.success("Users fetched successfully", userList);
   } catch (err) {
     res.error("Failed to fetch users", 500);
   }

@@ -17,6 +17,9 @@ export class FirestoreRepo<T extends object> {
 
   constructor(collectionName: string) {
     this.collectionName = collectionName;
+    if (!db) {
+      throw new Error("Firestore database instance is not initialized.");
+    }
     this.collection = db.collection(this.collectionName);
   }
 

@@ -1,5 +1,6 @@
 // User interface
 export interface User {
+  userId: string;
   email: string;
   fullname: string;
   role: "customer" | "admin";
@@ -13,4 +14,4 @@ export interface User {
   };
   createdAt?: Date;
   updatedAt?: Date;
-}
+} 
