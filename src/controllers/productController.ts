@@ -1,7 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
 import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import { Product } from "../models/product.models.ts";
+import { type Product } from "../models/product.models.ts";
 import Collection from "../config/collections.ts";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const productService = new FirestoreRepo<Product>(Collection.azushopProduct);
 
@@ -14,6 +16,7 @@ export const addProduct = async (req: Request, res: Response, next: NextFunction
         }
 
         const productData: Partial<Product> = {
+            id: uuidv4(), // Generate a new ID
             name,
             description,
             price: Number(price),
@@ -96,6 +99,55 @@ export const deleteProduct = async (req: Request, res: Response, next: NextFunct
 
         await productService.delete(id);
         res.success('Product deleted successfully');
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getRelatedProducts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { id } = req.params;
+        const limit = req.query.limit ? Number(req.query.limit) : 4;
+
+        const currentProduct = await productService.getById(id);
+        if (!currentProduct) {
+            return res.error('Product not found', 404);
+        }
+
+        // Strategy 1: Same category products (excluding current product)
+        let sameCategoryProducts = await productService.findManyByField('category', currentProduct.category);
+        let filtered = sameCategoryProducts
+            .filter(product => product.id !== id && product.isActive)
+            .slice(0, limit);
+
+        // Strategy 2: If not enough products, get trending products
+        if (filtered.length < limit) {
+            const trendingProducts = await productService.findManyByField('setTrending', true);
+            const additionalTrending = trendingProducts
+                .filter(product => 
+                    product.id !== id && 
+                    product.isActive &&
+                    !filtered.some(p => p.id === product.id)
+                )
+                .slice(0, limit - filtered.length);
+
+            filtered = [...filtered, ...additionalTrending];
+        }
+
+        // Strategy 3: If still not enough, get any active products
+        if (filtered.length < limit) {
+            const anyProducts = await productService.findManyByField('isActive', true);
+            const additionalProducts = anyProducts
+                .filter(product => 
+                    product.id !== id && 
+                    !filtered.some(p => p.id === product.id)
+                )
+                .slice(0, limit - filtered.length);
+
+            filtered = [...filtered, ...additionalProducts];
+        }
+
+        res.success('Related products retrieved successfully', filtered);
     } catch (error) {
         next(error);
     }

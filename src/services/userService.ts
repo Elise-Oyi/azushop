@@ -13,24 +13,28 @@ if (db && isFirebaseInitialized) {
 export const userService = {
   async createUser(data: Partial<User>) {
     if (!userRepo) {
-      console.log("🚧 Mock: Creating user", data);
-      return { id: "mock-id", ...data };
+      throw new Error("Firebase not initialized");
     }
     return userRepo.create(data);
   },
 
   async findByEmail(email: string) {
     if (!userRepo) {
-      console.log("🚧 Mock: Finding user by email", email);
-      return null; // Simulate user not found for now
+      throw new Error("Firebase not initialized");
     }
     return userRepo.getByField("email", email);
   },
   
+  async findByUserId(userId: string) {
+    if (!userRepo) {
+      throw new Error("Firebase not initialized");
+    }
+    return userRepo.getByField("userId", userId);
+  },
+
   async updateUser(id: string, data: Partial<User>) {
     if (!userRepo) {
-      console.log("🚧 Mock: Updating user", id, data);
-      return { id, ...data };
+      throw new Error("Firebase not initialized");
     }
     return userRepo.update(id, data);
   }

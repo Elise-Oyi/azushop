@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { register, login, updateAuthUser } from "../controllers/authController.ts";
 import { testRegister, testLogin } from "../controllers/testAuthController.ts";
+import { requireAuth } from "../middleware/authMiddleware.ts";
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.post("/test-login", testLogin);
 router.post("/register", register);
 router.post("/login", login);
 
-// Protected routes (will need auth middleware later)
-router.put("/user/:uid", updateAuthUser);
+// Protected routes (require authentication)
+router.put("/user/:uid", requireAuth, updateAuthUser);
 
 export default router;
