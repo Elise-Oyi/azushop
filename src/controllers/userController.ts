@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import Collection from "../config/collections.ts";
+import { FirestoreRepo } from "../repo/firestore.repo.js";
+import Collection from "../config/collections.js";
 
 const userService = new FirestoreRepo<{ name: string; email: string }>(Collection.azushopUser);
 

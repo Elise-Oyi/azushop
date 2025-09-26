@@ -3,7 +3,7 @@ import {
   CollectionReference,
   QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
-import { db } from "../config/firebase.ts";
+import { db } from "../config/firebase.js";
 
 interface ListOptions {
   limit?: number;

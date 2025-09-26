@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
-import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import { type Product } from "../models/product.models.ts";
-import Collection from "../config/collections.ts";
+import { FirestoreRepo } from "../repo/firestore.repo.js";
+import { type Product } from "../models/product.models.js";
+import Collection from "../config/collections.js";
 import { v4 as uuidv4 } from 'uuid';
 
 

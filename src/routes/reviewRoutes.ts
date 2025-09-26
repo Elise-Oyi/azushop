@@ -4,9 +4,9 @@ import {
     getReviewsByProductId, 
     getReviewById,
     markReviewHelpful 
-} from "../controllers/reviewController.ts";
-import { requireAuth } from "../middleware/authMiddleware.ts";
-import router from "./productRoutes.ts";
+} from "../controllers/reviewController.js";
+import { requireAuth } from "../middleware/authMiddleware.js";
+import router from "./productRoutes.js";
 
 const reviewRouter = Router();
 

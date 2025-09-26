@@ -1,7 +1,7 @@
-import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import { type User } from "../models/user.model.ts";
-import Collection from "../config/collections.ts";
-import { db, isFirebaseInitialized } from "../config/firebase.ts";
+import { FirestoreRepo } from "../repo/firestore.repo.js";
+import { type User } from "../models/user.model.js";
+import Collection from "../config/collections.js";
+import { db, isFirebaseInitialized } from "../config/firebase.js";
 
 let userRepo: FirestoreRepo<User> | null = null;
 

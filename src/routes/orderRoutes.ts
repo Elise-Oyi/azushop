@@ -6,8 +6,8 @@ import {
     updateOrderStatus,
     getOrderByOrderId,
     cancelOrder
-} from "../controllers/orderController.ts";
-import { requireAuth, requireAdmin } from "../middleware/authMiddleware.ts";
+} from "../controllers/orderController.js";
+import { requireAuth, requireAdmin } from "../middleware/authMiddleware.js";
 
 const router = Router();
 

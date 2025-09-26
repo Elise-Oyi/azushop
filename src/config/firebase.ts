@@ -1,5 +1,5 @@
-import admin from "./admin.ts";
-import config from "./index.ts";
+import admin from "./admin.js";
+import config from "./index.js";
 
 let isFirebaseInitialized = false;
 

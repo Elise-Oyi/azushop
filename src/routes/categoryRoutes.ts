@@ -7,8 +7,8 @@ import {
     updateCategory,
     deleteCategory,
     getProductsByCategory
-} from "../controllers/categoryController.ts";
-import { requireAuth, requireAdmin } from "../middleware/authMiddleware.ts";
+} from "../controllers/categoryController.js";
+import { requireAuth, requireAdmin } from "../middleware/authMiddleware.js";
 
 const router = Router();
 

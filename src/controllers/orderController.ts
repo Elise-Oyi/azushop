@@ -1,9 +1,9 @@
 import type { Request, Response, NextFunction } from "express";
-import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import { type Order, type CheckoutRequest, type OrderStatusUpdate, type OrderItem, type CheckoutItem } from "../models/order.models.ts";
-import { type Cart } from "../models/cart.models.ts";
-import { type Product } from "../models/product.models.ts";
-import Collection from "../config/collections.ts";
+import { FirestoreRepo } from "../repo/firestore.repo.js";
+import { type Order, type CheckoutRequest, type OrderStatusUpdate, type OrderItem, type CheckoutItem } from "../models/order.models.js";
+import { type Cart } from "../models/cart.models.js";
+import { type Product } from "../models/product.models.js";
+import Collection from "../config/collections.js";
 import { v4 as uuidv4 } from 'uuid';
 
 const orderService = new FirestoreRepo<Order>(Collection.azushopOrder);

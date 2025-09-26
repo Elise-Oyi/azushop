@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
-import admin from "../config/admin.ts";
-import { userService } from "../services/userService.ts";
-import type { User } from "../models/user.model.ts";
+import admin from "../config/admin.js";
+import { userService } from "../services/userService.js";
+import type { User } from "../models/user.model.js";
 
 // Extend Express Request to include user
 declare global {

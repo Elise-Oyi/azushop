@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import { AuthRepo } from "../repo/auth.repo.ts";
-import { userService } from "../services/userService.ts";
+import { AuthRepo } from "../repo/auth.repo.js";
+import { userService } from "../services/userService.js";
 
 const authRepo = new AuthRepo();
 

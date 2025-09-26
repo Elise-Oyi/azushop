@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
-import { FirestoreRepo } from "../repo/firestore.repo.ts";
-import { type Wishlist } from "../models/cart.models.ts";
-import { type Product } from "../models/product.models.ts";
-import Collection from "../config/collections.ts";
+import { FirestoreRepo } from "../repo/firestore.repo.js";
+import { type Wishlist } from "../models/cart.models.js";
+import { type Product } from "../models/product.models.js";
+import Collection from "../config/collections.js";
 
 const wishlistService = new FirestoreRepo<Wishlist>(Collection.azushopWishlist);
 const productService = new FirestoreRepo<Product>(Collection.azushopProduct);

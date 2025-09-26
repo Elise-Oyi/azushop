@@ -5,8 +5,8 @@ import {
     removeFromWishlist,
     clearWishlist,
     checkWishlistStatus
-} from "../controllers/wishlistController.ts";
-import { requireAuth } from "../middleware/authMiddleware.ts";
+} from "../controllers/wishlistController.js";
+import { requireAuth } from "../middleware/authMiddleware.js";
 
 const router = Router();
 

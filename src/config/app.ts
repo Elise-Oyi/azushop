@@ -1,14 +1,14 @@
 import express from 'express';
-import { errorHandler } from '../middleware/errorHandler.ts';
-import userRoutes from '../routes/userRoutes.ts';
-import authRoutes from '../routes/authRoutes.ts';
-import { responseMiddleware } from '../middleware/responseMiddleware.ts';
-import { rateLimiter } from '../middleware/rateLimiter.ts';
-import productRoutes from '../routes/productRoutes.ts';
-import reviewRouter from '../routes/reviewRoutes.ts';
-import cartRoutes from '../routes/cartRoutes.ts';
-import wishlistRoutes from '../routes/wishlistRoutes.ts';
-import orderRoutes from '../routes/orderRoutes.ts'; // Placeholder for order routes
+import { errorHandler } from '../middleware/errorHandler.js';
+import userRoutes from '../routes/userRoutes.js';
+import authRoutes from '../routes/authRoutes.js';
+import { responseMiddleware } from '../middleware/responseMiddleware.js';
+import { rateLimiter } from '../middleware/rateLimiter.js';
+import productRoutes from '../routes/productRoutes.js';
+import reviewRouter from '../routes/reviewRoutes.js';
+import cartRoutes from '../routes/cartRoutes.js';
+import wishlistRoutes from '../routes/wishlistRoutes.js';
+import orderRoutes from '../routes/orderRoutes.js'; // Placeholder for order routes
 
 const app = express()
 const PORT = 4000
@@ -54,4 +54,4 @@ app.use("/api/orders", orderRoutes) // Placeholder for order routes
 
 app.use(errorHandler);
 
-export default app;
+export default app; 

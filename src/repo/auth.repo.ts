@@ -1,5 +1,5 @@
-import admin from "../config/admin.ts";
-import config from "../config/index.ts";
+import admin from "../config/admin.js";
+import config from "../config/index.js";
 
 export class AuthRepo {
 

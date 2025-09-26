@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import { ApiResponse } from "../utils/ApiResponse.ts";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 export const responseMiddleware = (
   req: Request,

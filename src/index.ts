@@ -1,4 +1,4 @@
-import app from "./config/app.ts";
+import app from "./config/app.js";
 
 // For local development
 if (process.env.NODE_ENV !== 'production') {
