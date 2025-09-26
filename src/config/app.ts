@@ -26,6 +26,24 @@ app.use((req, res, next) => {
 
 app.use(responseMiddleware);
 
+// Homepage route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to AzuShop API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      auth: '/api/auth',
+      users: '/api/users',
+      products: '/api/products',
+      reviews: '/api/reviews',
+      cart: '/api/cart',
+      wishlist: '/api/wishlist',
+      orders: '/api/orders'
+    }
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes)
