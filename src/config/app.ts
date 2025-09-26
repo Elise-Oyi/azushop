@@ -8,7 +8,7 @@ import productRoutes from '../routes/productRoutes.ts';
 import reviewRouter from '../routes/reviewRoutes.ts';
 import cartRoutes from '../routes/cartRoutes.ts';
 import wishlistRoutes from '../routes/wishlistRoutes.ts';
-// import orderRoutes from '../routes/orderRoutes.ts'; // Placeholder for order routes
+import orderRoutes from '../routes/orderRoutes.ts'; // Placeholder for order routes
 
 const app = express()
 const PORT = 4000
@@ -32,7 +32,7 @@ app.use("/api/products", productRoutes)
 app.use("/api/reviews", reviewRouter)
 app.use("/api/cart", cartRoutes)
 app.use("/api/wishlist", wishlistRoutes) // Placeholder for wishlist routes
-app.use("/api/orders", reviewRouter) // Placeholder for order routes
+app.use("/api/orders", orderRoutes) // Placeholder for order routes
 
 app.use(errorHandler);
 

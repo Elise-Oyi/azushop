@@ -5,6 +5,7 @@ const Collection = {
     azushopReview: "azushopReview",
     azushopCart: "azushopCart",
     azushopWishlist: "azushopWishlist",
+    azushopCategory: "azushopCategory",
 }
 
 export default Collection;
