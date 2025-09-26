@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.use(responseMiddleware);
 
 // Homepage route
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     message: 'Welcome to AzuShop API',
     version: '1.0.0',
